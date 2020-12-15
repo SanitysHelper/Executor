@@ -1,0 +1,568 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Executor = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Scripts = Instance.new("ScrollingFrame")
+local ScriptAdd = Instance.new("TextButton")
+local ScriptFrame = Instance.new("ScrollingFrame")
+local Lines = Instance.new("TextLabel")
+local Source = Instance.new("TextBox")
+local Comments_ = Instance.new("TextLabel")
+local Globals_ = Instance.new("TextLabel")
+local Keywords_ = Instance.new("TextLabel")
+local RemoteHighlight_ = Instance.new("TextLabel")
+local Strings_ = Instance.new("TextLabel")
+local Tokens_ = Instance.new("TextLabel")
+local Numbers_ = Instance.new("TextLabel")
+local Copy = Instance.new("TextButton")
+local Clear = Instance.new("TextButton")
+local Save = Instance.new("TextButton")
+local Execute = Instance.new("TextButton")
+local Title = Instance.new("Frame")
+local TextButton = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local ScriptName = Instance.new("TextBox")
+
+--Properties:
+
+Executor.Name = "Executor"
+Executor.Parent = game.CoreGui
+Executor.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = Executor
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.Position = UDim2.new(0.298333347, 0, 0.451737463, 0)
+MainFrame.Size = UDim2.new(0.294166654, 0, 0.353925347, 0)
+MainFrame.BackgroundTransparency = 1
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+Scripts.Name = "Scripts"
+Scripts.Parent = MainFrame
+Scripts.Active = true
+Scripts.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+Scripts.Position = UDim2.new(0.787535429, 0, 0, 0)
+Scripts.Size = UDim2.new(0.212464586, 0, 0.818181813, 0)
+Scripts.BottomImage = "rbxassetid://5903324492"
+Scripts.CanvasSize = UDim2.new(0, 0, 1, 0)
+Scripts.MidImage = "rbxassetid://5903324492"
+Scripts.ScrollBarThickness = 6
+Scripts.TopImage = "rbxassetid://5903324492"
+
+ScriptAdd.Name = "ScriptAdd"
+ScriptAdd.Parent = Scripts
+ScriptAdd.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+ScriptAdd.Size = UDim2.new(1, 0, 0, 15)
+ScriptAdd.Font = Enum.Font.SourceSans
+ScriptAdd.Text = "Scripts"
+ScriptAdd.TextColor3 = Color3.fromRGB(0, 0, 0)
+ScriptAdd.TextScaled = true
+ScriptAdd.TextSize = 14.000
+ScriptAdd.TextWrapped = true
+
+ScriptFrame.Name = "ScriptFrame"
+ScriptFrame.Parent = MainFrame
+ScriptFrame.Active = true
+ScriptFrame.BackgroundColor3 = Color3.fromRGB(21, 20, 27)
+ScriptFrame.Size = UDim2.new(0.787535429, 0, 0.818181813, 0)
+ScriptFrame.BottomImage = "rbxassetid://5903324492"
+ScriptFrame.CanvasSize = UDim2.new(1, 0, 1, 0)
+ScriptFrame.MidImage = "rbxassetid://5903324492"
+ScriptFrame.ScrollBarThickness = 6
+ScriptFrame.TopImage = "rbxassetid://5903324492"
+
+Lines.Name = "Lines"
+Lines.Parent = ScriptFrame
+Lines.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Lines.BackgroundTransparency = 1.000
+Lines.Size = UDim2.new(0, 30, 1, 0)
+Lines.ZIndex = 4
+Lines.Font = Enum.Font.Code
+Lines.Text = "1"
+Lines.TextColor3 = Color3.fromRGB(255, 255, 255)
+Lines.TextSize = 12.000
+Lines.TextYAlignment = Enum.TextYAlignment.Top
+
+Source.Name = "Source"
+Source.Parent = ScriptFrame
+Source.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Source.BackgroundTransparency = 1.000
+Source.Position = UDim2.new(0, 30, 0, 0)
+Source.Size = UDim2.new(1, 0, 1, 0)
+Source.ZIndex = 3
+Source.ClearTextOnFocus = false
+Source.Font = Enum.Font.Code
+Source.MultiLine = true
+Source.PlaceholderColor3 = Color3.fromRGB(204, 204, 204)
+Source.Text = "--Text here\\n"
+Source.TextColor3 = Color3.fromRGB(204, 204, 204)
+Source.TextSize = 12.000
+Source.TextXAlignment = Enum.TextXAlignment.Left
+Source.TextYAlignment = Enum.TextYAlignment.Top
+
+Comments_.Name = "Comments_"
+Comments_.Parent = Source
+Comments_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Comments_.BackgroundTransparency = 1.000
+Comments_.Size = UDim2.new(1, -30, 1, 0)
+Comments_.ZIndex = 5
+Comments_.Font = Enum.Font.Code
+Comments_.Text = ""
+Comments_.TextColor3 = Color3.fromRGB(59, 200, 59)
+Comments_.TextSize = 12.000
+Comments_.TextXAlignment = Enum.TextXAlignment.Left
+Comments_.TextYAlignment = Enum.TextYAlignment.Top
+
+Globals_.Name = "Globals_"
+Globals_.Parent = Source
+Globals_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Globals_.BackgroundTransparency = 1.000
+Globals_.Size = UDim2.new(1, -30, 1, 0)
+Globals_.ZIndex = 5
+Globals_.Font = Enum.Font.Code
+Globals_.Text = ""
+Globals_.TextColor3 = Color3.fromRGB(132, 214, 247)
+Globals_.TextSize = 12.000
+Globals_.TextXAlignment = Enum.TextXAlignment.Left
+Globals_.TextYAlignment = Enum.TextYAlignment.Top
+
+Keywords_.Name = "Keywords_"
+Keywords_.Parent = Source
+Keywords_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Keywords_.BackgroundTransparency = 1.000
+Keywords_.Size = UDim2.new(1, -30, 1, 0)
+Keywords_.ZIndex = 5
+Keywords_.Font = Enum.Font.Code
+Keywords_.Text = ""
+Keywords_.TextColor3 = Color3.fromRGB(248, 109, 124)
+Keywords_.TextSize = 12.000
+Keywords_.TextXAlignment = Enum.TextXAlignment.Left
+Keywords_.TextYAlignment = Enum.TextYAlignment.Top
+
+RemoteHighlight_.Name = "RemoteHighlight_"
+RemoteHighlight_.Parent = Source
+RemoteHighlight_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RemoteHighlight_.BackgroundTransparency = 1.000
+RemoteHighlight_.Size = UDim2.new(1, -30, 1, 0)
+RemoteHighlight_.ZIndex = 5
+RemoteHighlight_.Font = Enum.Font.Code
+RemoteHighlight_.Text = ""
+RemoteHighlight_.TextColor3 = Color3.fromRGB(0, 144, 255)
+RemoteHighlight_.TextSize = 12.000
+RemoteHighlight_.TextXAlignment = Enum.TextXAlignment.Left
+RemoteHighlight_.TextYAlignment = Enum.TextYAlignment.Top
+
+Strings_.Name = "Strings_"
+Strings_.Parent = Source
+Strings_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Strings_.BackgroundTransparency = 1.000
+Strings_.Size = UDim2.new(1, -30, 1, 0)
+Strings_.ZIndex = 5
+Strings_.Font = Enum.Font.Code
+Strings_.Text = ""
+Strings_.TextColor3 = Color3.fromRGB(173, 241, 149)
+Strings_.TextSize = 12.000
+Strings_.TextXAlignment = Enum.TextXAlignment.Left
+Strings_.TextYAlignment = Enum.TextYAlignment.Top
+
+Tokens_.Name = "Tokens_"
+Tokens_.Parent = Source
+Tokens_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Tokens_.BackgroundTransparency = 1.000
+Tokens_.Size = UDim2.new(1, -30, 1, 0)
+Tokens_.ZIndex = 5
+Tokens_.Font = Enum.Font.Code
+Tokens_.Text = ""
+Tokens_.TextColor3 = Color3.fromRGB(255, 255, 255)
+Tokens_.TextSize = 12.000
+Tokens_.TextXAlignment = Enum.TextXAlignment.Left
+Tokens_.TextYAlignment = Enum.TextYAlignment.Top
+
+Numbers_.Name = "Numbers_"
+Numbers_.Parent = Source
+Numbers_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Numbers_.BackgroundTransparency = 1.000
+Numbers_.Size = UDim2.new(1, -30, 1, 0)
+Numbers_.ZIndex = 4
+Numbers_.Font = Enum.Font.Code
+Numbers_.Text = ""
+Numbers_.TextColor3 = Color3.fromRGB(255, 198, 0)
+Numbers_.TextSize = 12.000
+Numbers_.TextXAlignment = Enum.TextXAlignment.Left
+Numbers_.TextYAlignment = Enum.TextYAlignment.Top
+
+Copy.Name = "Copy"
+Copy.Parent = MainFrame
+Copy.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+Copy.Position = UDim2.new(0, 0, 0.909090877, 0)
+Copy.Size = UDim2.new(0.5, 0, 0.0909090936, 0)
+Copy.Font = Enum.Font.SourceSans
+Copy.Text = "Copy"
+Copy.TextColor3 = Color3.fromRGB(0, 0, 0)
+Copy.TextScaled = true
+Copy.TextSize = 14.000
+Copy.TextWrapped = true
+
+Clear.Name = "Clear"
+Clear.Parent = MainFrame
+Clear.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+Clear.Position = UDim2.new(0.5, 0, 0.908999979, 0)
+Clear.Size = UDim2.new(0.5, 0, 0.0909090936, 0)
+Clear.ZIndex = 2
+Clear.Font = Enum.Font.SourceSans
+Clear.Text = "Clear"
+Clear.TextColor3 = Color3.fromRGB(0, 0, 0)
+Clear.TextScaled = true
+Clear.TextSize = 14.000
+Clear.TextWrapped = true
+
+Save.Name = "Save"
+Save.Parent = MainFrame
+Save.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+Save.Position = UDim2.new(0.5, 0, 0.818000019, 0)
+Save.Size = UDim2.new(0.25, 0, 0.0909999982, 0)
+Save.ZIndex = 2
+Save.Font = Enum.Font.SourceSans
+Save.Text = "Save"
+Save.TextColor3 = Color3.fromRGB(0, 0, 0)
+Save.TextScaled = true
+Save.TextSize = 14.000
+Save.TextWrapped = true
+
+Execute.Name = "Execute"
+Execute.Parent = MainFrame
+Execute.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+Execute.Position = UDim2.new(0, 0, 0.818000019, 0)
+Execute.Size = UDim2.new(0.5, 0, 0.0909090936, 0)
+Execute.Font = Enum.Font.SourceSans
+Execute.Text = "Execute"
+Execute.TextColor3 = Color3.fromRGB(0, 0, 0)
+Execute.TextScaled = true
+Execute.TextSize = 14.000
+Execute.TextWrapped = true
+
+Title.Name = "Title"
+Title.Parent = MainFrame
+Title.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+Title.Position = UDim2.new(0, 0, -0.075000003, -1)
+Title.Size = UDim2.new(1, 0, 0.075000003, 0)
+
+TextButton.Name = "-"
+TextButton.Parent = Title
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.BackgroundTransparency = 1.000
+TextButton.Position = UDim2.new(0.941655159, 0, 0, 0)
+TextButton.Size = UDim2.new(0.0566572249, 0, 1, 0)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "-"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+
+TextLabel.Parent = Title
+TextLabel.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.215297446, 0, 0, 0)
+TextLabel.Size = UDim2.new(0.566572249, 0, 1.04848635, 0)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Script Editor"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+ScriptName.Name = "ScriptName"
+ScriptName.Parent = MainFrame
+ScriptName.BackgroundColor3 = Color3.fromRGB(64, 68, 81)
+ScriptName.Position = UDim2.new(0.749322057, 0, 0.818181813, 0)
+ScriptName.Size = UDim2.new(0.25, 0, 0.0909999982, 0)
+ScriptName.ZIndex = 5
+ScriptName.Font = Enum.Font.SourceSans
+ScriptName.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+ScriptName.PlaceholderText = "Name here"
+ScriptName.Text = ""
+ScriptName.TextColor3 = Color3.fromRGB(0, 0, 0)
+ScriptName.TextScaled = true
+ScriptName.TextSize = 14.000
+ScriptName.TextWrapped = true
+
+-- Scripts:
+
+local function JSWXRA_fake_script() -- Scripts.LocalScript 
+	local script = Instance.new('LocalScript', Scripts)
+
+	pcall(function()
+		function removetext(text)
+			local tabletext = text:split("Executor"..[[\]])
+			return tabletext[2]
+		end
+	
+		if listfiles and readfile and listfiles("Executor") then
+			local files = listfiles("Executor")
+			if files then
+				for i,v in pairs(files) do
+					if v:match(".lua") then
+						local scriptie = readfile(v)
+						local button = script.Parent.ScriptAdd:Clone()
+						button.Parent = script.Parent
+						button.Text = removetext(tostring(v))
+						button.Position = UDim2.fromOffset(0,15*i)
+						button.MouseButton1Click:Connect(function()
+							script.Parent.Parent.ScriptFrame.Source.Text = scriptie
+						end)
+					end
+				end
+			end
+		end
+	end)
+end
+coroutine.wrap(JSWXRA_fake_script)()
+local function YYYZ_fake_script() -- ScriptFrame.LocalScript 
+	local script = Instance.new('LocalScript', ScriptFrame)
+
+	local lua_keywords = {"and", "break", "do", "else", "elseif", "end", "false", "for", "function", "goto", "if", "in", "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while"}
+	local global_env = {"getrawmetatable", "game", "workspace", "script", "math", "string", "table", "print", "wait", "BrickColor", "Color3", "next", "pairs", "ipairs", "select", "unpack", "Instance", "Vector2", "Vector3", "CFrame", "Ray", "UDim2", "Enum", "assert", "error", "warn", "tick", "loadstring", "_G", "shared", "getfenv", "setfenv", "newproxy", "setmetatable", "getmetatable", "os", "debug", "pcall", "ypcall", "xpcall", "rawequal", "rawset", "rawget", "tonumber", "tostring", "type", "typeof", "_VERSION", "coroutine", "delay", "require", "spawn", "LoadLibrary", "settings", "stats", "time", "UserSettings", "version", "Axes", "ColorSequence", "Faces", "ColorSequenceKeypoint", "NumberRange", "NumberSequence", "NumberSequenceKeypoint", "gcinfo", "elapsedTime", "collectgarbage", "PhysicalProperties", "Rect", "Region3", "Region3int16", "UDim", "Vector2int16", "Vector3int16"}
+	
+	local Source = script.Parent.Source
+	local Lines = script.Parent.Lines
+	
+	local Highlight = function(string, keywords)
+	    local K = {}
+	    local S = string
+	    local Token =
+	    {
+	        ["="] = true,
+	        ["."] = true,
+	        [","] = true,
+	        ["("] = true,
+	        [")"] = true,
+	        ["["] = true,
+	        ["]"] = true,
+	        ["{"] = true,
+	        ["}"] = true,
+	        [":"] = true,
+	        ["*"] = true,
+	        ["/"] = true,
+	        ["+"] = true,
+	        ["-"] = true,
+	        ["%"] = true,
+			[";"] = true,
+			["~"] = true
+	    }
+	    for i, v in pairs(keywords) do
+	        K[v] = true
+	    end
+	    S = S:gsub(".", function(c)
+	        if Token[c] ~= nil then
+	            return "\32"
+	        else
+	            return c
+	        end
+	    end)
+	    S = S:gsub("%S+", function(c)
+	        if K[c] ~= nil then
+	            return c
+	        else
+	            return (" "):rep(#c)
+	        end
+	    end)
+	  
+	    return S
+	end
+	
+	local hTokens = function(string)
+	    local Token =
+	    {
+	        ["="] = true,
+	        ["."] = true,
+	        [","] = true,
+	        ["("] = true,
+	        [")"] = true,
+	        ["["] = true,
+	        ["]"] = true,
+	        ["{"] = true,
+	        ["}"] = true,
+	        [":"] = true,
+	        ["*"] = true,
+	        ["/"] = true,
+	        ["+"] = true,
+	        ["-"] = true,
+	        ["%"] = true,
+			[";"] = true,
+			["~"] = true
+	    }
+	    local A = ""
+	    string:gsub(".", function(c)
+	        if Token[c] ~= nil then
+	            A = A .. c
+	        elseif c == "\n" then
+	            A = A .. "\n"
+			elseif c == "\t" then
+				A = A .. "\t"
+	        else
+	            A = A .. "\32"
+	        end
+	    end)
+	  
+	    return A
+	end
+	
+	
+	local strings = function(string)
+	    local highlight = ""
+	    local quote = false
+	    string:gsub(".", function(c)
+	        if quote == false and c == "\"" then
+	            quote = true
+	        elseif quote == true and c == "\"" then
+	            quote = false
+	        end
+	        if quote == false and c == "\"" then
+	            highlight = highlight .. "\""
+	        elseif c == "\n" then
+	            highlight = highlight .. "\n"
+			elseif c == "\t" then
+			    highlight = highlight .. "\t"
+	        elseif quote == true then
+	            highlight = highlight .. c
+	        elseif quote == false then
+	            highlight = highlight .. "\32"
+	        end
+	    end)
+	  
+	    return highlight
+	end
+	
+	local comments = function(string)
+	    local ret = ""
+	    string:gsub("[^\r\n]+", function(c)
+	        local comm = false
+	        local i = 0
+	        c:gsub(".", function(n)
+	            i = i + 1
+	            if c:sub(i, i + 1) == "--" then
+	                comm = true
+	            end
+	            if comm == true then
+	                ret = ret .. n
+	            else
+	                ret = ret .. "\32"
+	            end
+	        end)
+	        ret = ret
+	    end)
+	    
+	    return ret
+	end
+	
+	local numbers = function(string)
+	    local A = ""
+	    string:gsub(".", function(c)
+	        if tonumber(c) ~= nil then
+	            A = A .. c
+	        elseif c == "\n" then
+	            A = A .. "\n"
+			elseif c == "\t" then
+				A = A .. "\t"
+	        else
+	            A = A .. "\32"
+	        end
+	    end)
+	  
+	    return A
+	end
+	
+	local highlight_source = function(type)
+		if type == "Text" then
+			Source.Text = Source.Text:gsub("\13", "")
+			Source.Text = Source.Text:gsub("\t", "      ")
+			local s = Source.Text
+			Source.Keywords_.Text = Highlight(s, lua_keywords)
+			Source.Globals_.Text = Highlight(s, global_env)
+			Source.RemoteHighlight_.Text = Highlight(s, {"FireServer", "fireServer", "InvokeServer", "invokeServer"})
+			Source.Tokens_.Text = hTokens(s)
+			Source.Numbers_.Text = numbers(s)
+			Source.Strings_.Text = strings(s)
+			local lin = 1
+			s:gsub("\n", function()
+				lin = lin + 1
+			end)
+			Lines.Text = ""
+			for i = 1, lin do
+				Lines.Text = Lines.Text .. i .. "\n"
+			end
+		end
+	end
+	
+	highlight_source("Text")
+	local lasttext = script.Parent.Source.Text
+	Source.Changed:Connect(function()
+		if lasttext ~= script.Parent.Source.Text then
+		    game:GetService("RunService").Stepped:Wait()
+			highlight_source("Text")
+			Source.Size = UDim2.fromOffset(Source.TextBounds.X+Source.Parent.AbsoluteWindowSize.X, Source.TextBounds.Y+Source.Parent.AbsoluteWindowSize.Y)
+			Source.Parent.CanvasSize = UDim2.fromOffset(Source.TextBounds.X+50,Source.TextBounds.Y+50)
+		end
+	end)
+	
+	
+end
+coroutine.wrap(YYYZ_fake_script)()
+local function GBHXXY_fake_script() -- Copy.LocalScript 
+	local script = Instance.new('LocalScript', Copy)
+
+	script.Parent.MouseButton1Click:Connect(function()
+	    if setclipboard then
+			setclipboard(script.Parent.Parent.ScriptFrame.Source.Text)
+	    end
+	end)
+end
+coroutine.wrap(GBHXXY_fake_script)()
+local function URCLS_fake_script() -- Clear.LocalScript 
+	local script = Instance.new('LocalScript', Clear)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.ScriptFrame.Source.Text = ""
+	end)
+end
+coroutine.wrap(URCLS_fake_script)()
+local function QRUMQ_fake_script() -- Save.LocalScript 
+	local script = Instance.new('LocalScript', Save)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		if isfolder and not isfolder("Executor") then
+			makefolder("Executor")
+		end
+		if writefile then
+			writefile("Executor/".. script.Parent.Parent.ScriptName.Text ..".lua", script.Parent.Parent.ScriptFrame.Source.Text)
+		else
+			script.Parent.Text = "Not supported"
+		end
+	end)
+end
+coroutine.wrap(QRUMQ_fake_script)()
+local function XYTPR_fake_script() -- Execute.LocalScript 
+	local script = Instance.new('LocalScript', Execute)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		loadstring(script.Parent.Parent.ScriptFrame.Source.Text)()
+	end)
+end
+coroutine.wrap(XYTPR_fake_script)()
+local function FLZUO_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		for i,v in pairs(script.Parent.Parent.Parent:GetChildren()) do
+			if v.Name ~= "Title" and v:IsA("GuiBase") then
+				v.Visible = not v.Visible
+			end
+		end
+	end)
+end
+coroutine.wrap(FLZUO_fake_script)()
