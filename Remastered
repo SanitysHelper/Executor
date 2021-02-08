@@ -1,0 +1,633 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Exering = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local CodingFrame = Instance.new("ScrollingFrame")
+local Source = Instance.new("TextBox")
+local Comments_ = Instance.new("TextLabel")
+local Globals_ = Instance.new("TextLabel")
+local Keywords_ = Instance.new("TextLabel")
+local RemoteHighlight_ = Instance.new("TextLabel")
+local Strings_ = Instance.new("TextLabel")
+local Tokens_ = Instance.new("TextLabel")
+local Numbers_ = Instance.new("TextLabel")
+local TextLabel = Instance.new("TextLabel")
+local Lines = Instance.new("TextLabel")
+local Execute = Instance.new("TextButton")
+local Clear = Instance.new("TextButton")
+local Save = Instance.new("TextButton")
+local name = Instance.new("TextBox")
+local Scripts = Instance.new("ScrollingFrame")
+local Button = Instance.new("TextButton")
+
+--Properties:
+
+Exering.Name = "Exering"
+Exering.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = Exering
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.Position = UDim2.new(0.339011937, 0, 0.34362933, 0)
+MainFrame.Size = UDim2.new(0.277, 0,0.225, 0)
+
+CodingFrame.Name = "CodingFrame"
+CodingFrame.Parent = MainFrame
+CodingFrame.Active = true
+CodingFrame.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+CodingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+CodingFrame.BorderSizePixel = 0
+CodingFrame.Size = UDim2.new(0.850000024, 0, 0.850000024, 0)
+CodingFrame.BottomImage = "rbxassetid://5903324492"
+CodingFrame.CanvasSize = UDim2.new(0, 0, 0, 250)
+CodingFrame.MidImage = "rbxassetid://5903324492"
+CodingFrame.ScrollBarThickness = 6
+CodingFrame.TopImage = "rbxassetid://5903324492"
+CodingFrame.ScrollBarImageColor3 = Color3.fromRGB(153, 242, 255)
+
+Source.Name = "Source"
+Source.Parent = CodingFrame
+Source.BackgroundColor3 = Color3.fromRGB(99, 99, 99)
+Source.BackgroundTransparency = 0.800
+Source.Position = UDim2.new(0, 20, 0, 0)
+Source.Size = UDim2.new(1, -26, 1, 0)
+Source.ZIndex = 3
+Source.ClearTextOnFocus = false
+Source.Font = Enum.Font.Code
+Source.MultiLine = true
+Source.PlaceholderColor3 = Color3.fromRGB(204, 204, 204)
+Source.Text = ""
+Source.TextColor3 = Color3.fromRGB(204, 204, 204)
+Source.TextSize = 12.000
+Source.TextXAlignment = Enum.TextXAlignment.Left
+Source.TextYAlignment = Enum.TextYAlignment.Top
+
+Comments_.Name = "Comments_"
+Comments_.Parent = Source
+Comments_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Comments_.BackgroundTransparency = 1.000
+Comments_.Size = UDim2.new(1, 0, 1, 0)
+Comments_.ZIndex = 5
+Comments_.Font = Enum.Font.Code
+Comments_.Text = ""
+Comments_.TextColor3 = Color3.fromRGB(59, 200, 59)
+Comments_.TextSize = 12.000
+Comments_.TextXAlignment = Enum.TextXAlignment.Left
+Comments_.TextYAlignment = Enum.TextYAlignment.Top
+
+Globals_.Name = "Globals_"
+Globals_.Parent = Source
+Globals_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Globals_.BackgroundTransparency = 1.000
+Globals_.Size = UDim2.new(1, 0, 1, 0)
+Globals_.ZIndex = 5
+Globals_.Font = Enum.Font.Code
+Globals_.Text = ""
+Globals_.TextColor3 = Color3.fromRGB(132, 214, 247)
+Globals_.TextSize = 12.000
+Globals_.TextXAlignment = Enum.TextXAlignment.Left
+Globals_.TextYAlignment = Enum.TextYAlignment.Top
+
+Keywords_.Name = "Keywords_"
+Keywords_.Parent = Source
+Keywords_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Keywords_.BackgroundTransparency = 1.000
+Keywords_.Size = UDim2.new(1, 0, 1, 0)
+Keywords_.ZIndex = 5
+Keywords_.Font = Enum.Font.Code
+Keywords_.Text = ""
+Keywords_.TextColor3 = Color3.fromRGB(248, 109, 124)
+Keywords_.TextSize = 12.000
+Keywords_.TextXAlignment = Enum.TextXAlignment.Left
+Keywords_.TextYAlignment = Enum.TextYAlignment.Top
+
+RemoteHighlight_.Name = "RemoteHighlight_"
+RemoteHighlight_.Parent = Source
+RemoteHighlight_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RemoteHighlight_.BackgroundTransparency = 1.000
+RemoteHighlight_.Size = UDim2.new(1, 0, 1, 0)
+RemoteHighlight_.ZIndex = 5
+RemoteHighlight_.Font = Enum.Font.Code
+RemoteHighlight_.Text = ""
+RemoteHighlight_.TextColor3 = Color3.fromRGB(0, 144, 255)
+RemoteHighlight_.TextSize = 12.000
+RemoteHighlight_.TextXAlignment = Enum.TextXAlignment.Left
+RemoteHighlight_.TextYAlignment = Enum.TextYAlignment.Top
+
+Strings_.Name = "Strings_"
+Strings_.Parent = Source
+Strings_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Strings_.BackgroundTransparency = 1.000
+Strings_.Size = UDim2.new(1, 0, 1, 0)
+Strings_.ZIndex = 5
+Strings_.Font = Enum.Font.Code
+Strings_.Text = ""
+Strings_.TextColor3 = Color3.fromRGB(173, 241, 149)
+Strings_.TextSize = 12.000
+Strings_.TextXAlignment = Enum.TextXAlignment.Left
+Strings_.TextYAlignment = Enum.TextYAlignment.Top
+
+Tokens_.Name = "Tokens_"
+Tokens_.Parent = Source
+Tokens_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Tokens_.BackgroundTransparency = 1.000
+Tokens_.Size = UDim2.new(1, 0, 1, 0)
+Tokens_.ZIndex = 5
+Tokens_.Font = Enum.Font.Code
+Tokens_.Text = ""
+Tokens_.TextColor3 = Color3.fromRGB(255, 255, 255)
+Tokens_.TextSize = 12.000
+Tokens_.TextXAlignment = Enum.TextXAlignment.Left
+Tokens_.TextYAlignment = Enum.TextYAlignment.Top
+
+Numbers_.Name = "Numbers_"
+Numbers_.Parent = Source
+Numbers_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Numbers_.BackgroundTransparency = 1.000
+Numbers_.Size = UDim2.new(1, 0, 1, 0)
+Numbers_.ZIndex = 4
+Numbers_.Font = Enum.Font.Code
+Numbers_.Text = ""
+Numbers_.TextColor3 = Color3.fromRGB(255, 198, 0)
+Numbers_.TextSize = 12.000
+Numbers_.TextXAlignment = Enum.TextXAlignment.Left
+Numbers_.TextYAlignment = Enum.TextYAlignment.Top
+
+TextLabel.Parent = CodingFrame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Size = UDim2.new(1, 0, 1, 0)
+TextLabel.Visible = false
+TextLabel.Font = Enum.Font.Code
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 12.000
+TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel.TextYAlignment = Enum.TextYAlignment.Top
+
+Lines.Name = "Lines"
+Lines.Parent = CodingFrame
+Lines.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Lines.BackgroundTransparency = 0.900
+Lines.Size = UDim2.new(0, 20, 1, 0)
+Lines.ZIndex = 4
+Lines.Font = Enum.Font.Code
+Lines.Text = "1"
+Lines.TextColor3 = Color3.fromRGB(255, 255, 255)
+Lines.TextSize = 12.000
+Lines.TextXAlignment = Enum.TextXAlignment.Left
+Lines.TextYAlignment = Enum.TextYAlignment.Top
+
+Execute.Name = "Execute"
+Execute.Parent = MainFrame
+Execute.BackgroundColor3 = Color3.fromRGB(85, 255, 127)
+Execute.BorderSizePixel = 0
+Execute.Position = UDim2.new(0, 0, 0.850000024, 0)
+Execute.Size = UDim2.new(0.200000003, 0, 0.150000006, 0)
+Execute.Font = Enum.Font.Ubuntu
+Execute.Text = "Execute"
+Execute.TextColor3 = Color3.fromRGB(0, 0, 0)
+Execute.TextScaled = true
+Execute.TextSize = 14.000
+Execute.TextWrapped = true
+
+Clear.Name = "Clear"
+Clear.Parent = MainFrame
+Clear.BackgroundColor3 = Color3.fromRGB(255, 131, 131)
+Clear.BorderSizePixel = 0
+Clear.Position = UDim2.new(0.200000003, 0, 0.850000024, 0)
+Clear.Size = UDim2.new(0.200000003, 0, 0.150000006, 0)
+Clear.Font = Enum.Font.Ubuntu
+Clear.Text = "Clear"
+Clear.TextColor3 = Color3.fromRGB(0, 0, 0)
+Clear.TextScaled = true
+Clear.TextSize = 14.000
+Clear.TextWrapped = true
+
+Save.Name = "Save"
+Save.Parent = MainFrame
+Save.BackgroundColor3 = Color3.fromRGB(149, 236, 255)
+Save.BorderSizePixel = 0
+Save.Position = UDim2.new(0.400000006, 0, 0.850000024, 0)
+Save.Size = UDim2.new(0.200000003, 0, 0.150000006, 0)
+Save.Font = Enum.Font.Ubuntu
+Save.Text = "Save Script"
+Save.TextColor3 = Color3.fromRGB(0, 0, 0)
+Save.TextScaled = true
+Save.TextSize = 14.000
+Save.TextWrapped = true
+
+name.Name = "name"
+name.Parent = MainFrame
+name.BackgroundColor3 = Color3.fromRGB(255, 220, 131)
+name.BorderSizePixel = 0
+name.Position = UDim2.new(0.600000024, 0, 0.850000024, 0)
+name.Size = UDim2.new(0.25, 0, 0.150000006, 0)
+name.Font = Enum.Font.Cartoon
+name.PlaceholderText = "Name here"
+name.Text = ""
+name.TextColor3 = Color3.fromRGB(0, 0, 0)
+name.TextScaled = true
+name.TextSize = 14.000
+name.TextWrapped = true
+name.TextXAlignment = Enum.TextXAlignment.Left
+
+Scripts.Name = "Scripts"
+Scripts.Parent = MainFrame
+Scripts.Active = true
+Scripts.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+Scripts.BorderSizePixel = 0
+Scripts.Position = UDim2.new(0.850000024, 0, 0, 0)
+Scripts.Size = UDim2.new(0.150000006, 0, 1, 0)
+Scripts.BottomImage = "rbxassetid://5903324492"
+Scripts.MidImage = "rbxassetid://5903324492"
+Scripts.ScrollBarThickness = 3
+Scripts.TopImage = "rbxassetid://5903324492"
+Scripts.ScrollBarImageColor3 = Color3.fromRGB(255, 96, 96)
+
+Button.Name = "Button"
+Button.Parent = Scripts
+Button.BackgroundColor3 = Color3.fromRGB(124, 124, 124)
+Button.BorderSizePixel = 0
+Button.Size = UDim2.new(1, -3, 0, 20)
+Button.Visible = false
+Button.Font = Enum.Font.SourceSans
+Button.Text = "Scripts"
+Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button.TextScaled = true
+Button.TextSize = 14.000
+Button.TextWrapped = true
+
+-- Scripts:
+
+local function MYKY_fake_script() -- CodingFrame.LocalScript 
+	local script = Instance.new('LocalScript', CodingFrame)
+
+	local textsize = 12
+	
+	for i,v in pairs(script.Parent:GetDescendants()) do
+		if v:IsA("TextBox") or v:IsA("TextLabel") then
+			v.TextSize = textsize
+		end
+	end
+	
+	function split(text, splitter)
+		splitter = tostring(splitter)
+		text = text..splitter
+		local returning = {}
+		local returningtxt = ""
+		local tnumber = tonumber(#splitter) - 1
+		for i = 1,#text do
+			if text:sub(i,i+tnumber) ~= splitter and splitter ~= "" then
+				returningtxt = returningtxt..text:sub(i,i)
+			else
+				if splitter == "" then
+					returning[#returning+1] = text:sub(i,i)
+				else
+					returning[#returning+1] = returningtxt
+				end
+				returningtxt = ""
+			end
+		end
+		return returning
+	end
+	
+	local lua_keywords = {"and", "break", "do", "else", "elseif", "end", "false", "for", "function", "goto", "if", "in", "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while"}
+	local global_env = {"getrawmetatable", "game", "workspace", "script", "math", "string", "table", "print", "wait", "BrickColor", "Color3", "next", "pairs", "ipairs", "select", "unpack", "Instance", "Vector2", "Vector3", "CFrame", "Ray", "UDim2", "Enum", "assert", "error", "warn", "tick", "loadstring", "_G", "shared", "getfenv", "setfenv", "newproxy", "setmetatable", "getmetatable", "os", "debug", "pcall", "ypcall", "xpcall", "rawequal", "rawset", "rawget", "tonumber", "tostring", "type", "typeof", "_VERSION", "coroutine", "delay", "require", "spawn", "LoadLibrary", "settings", "stats", "time", "UserSettings", "version", "Axes", "ColorSequence", "Faces", "ColorSequenceKeypoint", "NumberRange", "NumberSequence", "NumberSequenceKeypoint", "gcinfo", "elapsedTime", "collectgarbage", "PhysicalProperties", "Rect", "Region3", "Region3int16", "UDim", "Vector2int16", "Vector3int16"}
+	
+	local Source = script.Parent.Source
+	local Lines = Source.Parent.Lines
+	
+	local Highlight = function(string, keywords)
+		local K = {}
+		local S = string
+		local Token =
+			{
+				["="] = true,
+				["."] = true,
+				[","] = true,
+				["("] = true,
+				[")"] = true,
+				["["] = true,
+				["]"] = true,
+				["{"] = true,
+				["}"] = true,
+				[":"] = true,
+				["*"] = true,
+				["/"] = true,
+				["+"] = true,
+				["-"] = true,
+				["%"] = true,
+				[";"] = true,
+				["~"] = true,
+				['"'] = true,
+				["'"] = true
+			}
+		for i, v in pairs(keywords) do
+			K[v] = true
+		end
+		S = S:gsub(".", function(c)
+			if Token[c] ~= nil then
+				return "\32"
+			else
+				return c
+			end
+		end)
+		S = S:gsub("%S+", function(c)
+			if K[c] ~= nil then
+				return c
+			else
+				return (" "):rep(#c)
+			end
+		end)
+	
+		return S
+	end
+	
+	local hTokens = function(string)
+		local Token =
+			{
+				["="] = true,
+				["."] = true,
+				[","] = true,
+				["("] = true,
+				[")"] = true,
+				["["] = true,
+				["]"] = true,
+				["{"] = true,
+				["}"] = true,
+				[":"] = true,
+				["*"] = true,
+				["/"] = true,
+				["+"] = true,
+				["-"] = true,
+				["%"] = true,
+				[";"] = true,
+				["~"] = true
+			}
+		local A = ""
+		string:gsub(".", function(c)
+			if Token[c] ~= nil then
+				A = A .. c
+			elseif c == "\n" then
+				A = A .. "\n"
+			elseif c == "\t" then
+				A = A .. "\t"
+			else
+				A = A .. "\32"
+			end
+		end)
+	
+		return A
+	end
+	
+	
+	local strings = function(string)
+		local highlight = ""
+		local quote = false
+		string:gsub(".", function(c)
+			if quote == false and c == "\"" or c == '\'' then
+				quote = true
+			elseif quote == true and c == "\"" or c == '\'' then
+				quote = false
+			end
+			if quote == false and c == "\"" or c == '\'' then
+				highlight = highlight .. "\""
+			elseif c == "\n" then
+				highlight = highlight .. "\n"
+			elseif c == "\t" then
+				highlight = highlight .. "\t"
+			elseif quote == true then
+				highlight = highlight .. c
+			elseif quote == false then
+				highlight = highlight .. "\32"
+			end
+		end)
+	
+		return highlight
+	end
+	
+	local comments = function(string)
+		local ret = ""
+		string:gsub("[^\r\n]+", function(c)
+			local comm = false
+			local i = 0
+			c:gsub(".", function(n)
+				i = i + 1
+				if c:sub(i, i + 1) == "--" then
+					comm = true
+				end
+				if comm == true then
+					ret = ret .. n
+				else
+					ret = ret .. "\32"
+				end
+			end)
+			ret = ret
+		end)
+	
+		return ret
+	end
+	
+	local numbers = function(string)
+		local A = ""
+		string:gsub(".", function(c)
+			if tonumber(c) ~= nil then
+				A = A .. c
+			elseif c == "\n" then
+				A = A .. "\n"
+			elseif c == "\t" then
+				A = A .. "\t"
+			else
+				A = A .. "\32"
+			end
+		end)
+	
+		return A
+	end
+	
+	function gettextsizex(text)
+		script.Parent.TextLabel.Text = text
+		return script.Parent.TextLabel.TextBounds.X
+	end
+	
+	local highlight_source = function(type)
+		if type == "Text" then
+			Source.Text = Source.Text:gsub("\13", "")
+			Source.Text = Source.Text:gsub("\t", "      ")
+			local s = Source.Text
+			Source.Keywords_.Text = Highlight(s, lua_keywords)
+			Source.Globals_.Text = Highlight(s, global_env)
+			Source.RemoteHighlight_.Text = Highlight(s, {"FireServer", "fireServer", "InvokeServer", "invokeServer"})
+			Source.Tokens_.Text = hTokens(s)
+			Source.Numbers_.Text = numbers(s)
+			Source.Strings_.Text = strings(s)
+			local lin = 1
+			s:gsub("\n", function()
+				lin = lin + 1
+			end)
+			Lines.Text = ""
+			for i = 1, lin do
+				Lines.Text = Lines.Text .. i .. "\n"
+			end
+			Source.Parent.CanvasSize = UDim2.fromOffset(Source.TextBounds.X + 25 + 6, Source.TextBounds.Y + 10 + 6)
+			local ymax = -1
+			Source.Text:sub(0,Source.CursorPosition):gsub("\n", function()
+				ymax = ymax + 1
+			end)
+	
+			local xmax = 0
+			local currentline = ""
+	
+			local newtable = split(Source.Text, "\n")
+			currentline = newtable[#newtable]
+	
+			xmax = gettextsizex(currentline)
+	
+			Source.Parent.CanvasPosition = Vector2.new(xmax, ymax * Source.TextSize)
+		end
+	end
+	
+	highlight_source("Text")
+	
+	Source.Changed:Connect(highlight_source)
+	
+	
+end
+coroutine.wrap(MYKY_fake_script)()
+local function HTBQBZC_fake_script() -- MainFrame.LocalScript 
+	local script = Instance.new('LocalScript', MainFrame)
+
+	local frame = script.Parent
+	local execute = frame.Execute
+	local clear = frame.Clear
+	local save = frame.Save
+	local textbox = frame.name
+	local scripttext = frame.CodingFrame.Source
+	local lp = game.Players.LocalPlayer
+	
+	function getscript()
+		return scripttext.Text
+	end
+	
+	execute.MouseButton1Click:Connect(function()
+		loadstring(getscript())()
+	end)
+	
+	clear.MouseButton1Click:Connect(function()
+		scripttext.Text = ""
+	end)
+	
+	save.MouseButton1Click:Connect(function()
+		if writefile and isfolder then
+			if isfolder("script executor") then
+				writefile("script executor/"..textbox.Text..".lua", getscript())
+			elseif makefolder then
+				    makefolder("script executor")
+				    writefile("script executor/".. textbox.Text..".lua"/ getscript())
+			end
+		end
+	end)
+	
+	
+	
+	if listfiles and readfile and isfolder("script executor") then
+		for i,v in pairs(listfiles("script executor")) do
+			local new = frame.Scripts.Button:Clone()
+			new.Name = v:gsub("script executor"..[[\]], "")
+			new.Text = new.Name:gsub(".lua", "")
+			new.MouseButton1Click:Connect(function()
+				scripttext.Text = readfile(v)
+			end)
+			new.Parent = frame.Scripts
+			new.Position = UDim2.fromOffset(0, (#frame.Scripts:GetChildren() - 2) * 20)
+			new.Visible = true
+		end
+	elseif isfolder and not isfolder("script executor") and makefolder then
+	    print("failed")
+		makefolder("script executor")
+	end
+	
+	function drag(guiobject, gui)
+		local moveoutofscreen = false
+		local speed = 0.05
+		
+		local uis = game:GetService("UserInputService")
+		local helddown = false
+		local mouse = lp:GetMouse()
+		local delta = nil
+		local gui = gui
+		if not gui then
+			gui = guiobject
+			repeat
+				gui = gui.Parent
+				wait()
+			until gui:IsA("ScreenGui")
+		end
+	
+		local function offsettoscale(pos)
+			local p1 = pos.X.Offset / gui.AbsoluteSize.X + pos.X.Scale
+			local p2 = pos.Y.Offset / gui.AbsoluteSize.Y + pos.Y.Scale
+			return UDim2.fromScale(p1,p2)
+		end
+	
+		local function checkpos1(pos)
+			local range1 = guiobject.AbsolutePosition.X
+			local range2 = guiobject.AbsolutePosition.X + guiobject.AbsoluteSize.X
+			local range3 = guiobject.AbsolutePosition.Y
+			local range4 = guiobject.AbsolutePosition.Y + guiobject.AbsoluteSize.Y
+			if pos.X.Offset >= range1 and pos.X.Offset <= range2 and pos.Y.Offset >= range3 and pos.Y.Offset <= range4 then
+				return true
+			end
+		end
+	
+		guiobject.Active = true
+	
+		uis.InputBegan:Connect(function(thing)
+			if thing.UserInputType == Enum.UserInputType.MouseButton1 and checkpos1(UDim2.fromOffset(mouse.X,mouse.Y)) == true then
+				delta = UDim2.fromOffset(guiobject.AbsolutePosition.X,guiobject.AbsolutePosition.Y) - UDim2.fromOffset(mouse.X,mouse.Y)
+				helddown = true
+				repeat game:GetService("RunService").Stepped:Wait() until thing.UserInputState == Enum.UserInputState.End
+				helddown = false
+			end
+		end)
+		--pos.X.Offset >= 0 and pos.X.Offset <= script.Parent.Parent.AbsoluteSize.X
+	
+		local function modifypos(position, position2)
+			if moveoutofscreen ~= true then
+				if position.X.Offset < 0 then
+					position = UDim2.fromOffset(0,position.Y.Offset)
+				elseif position2.X.Offset > gui.AbsoluteSize.X then
+					position = UDim2.fromOffset(gui.AbsoluteSize.X - guiobject.AbsoluteSize.X, position.Y.Offset)
+				end
+	
+				if position.Y.Offset < 0 then
+					position = UDim2.fromOffset(position.X.Offset,0)
+				elseif position2.Y.Offset > gui.AbsoluteSize.Y then
+					position = UDim2.fromOffset(position.X.Offset, gui.AbsoluteSize.Y - guiobject.AbsoluteSize.Y)
+				end
+			end
+			return position
+		end
+	
+		local function movegui()
+			if helddown == true then
+				local mpos = UDim2.fromOffset(mouse.X,mouse.Y)
+				local pos = offsettoscale(modifypos(mpos + delta, (mpos+delta) + UDim2.fromOffset(guiobject.AbsoluteSize.X,guiobject.AbsoluteSize.Y)))
+				if speed > 0 then
+					guiobject:TweenPosition(pos,Enum.EasingDirection.In,Enum.EasingStyle.Linear,speed,true)
+				else
+					guiobject.Position = pos
+				end
+			end
+		end
+	
+		mouse.Move:Connect(function()
+			movegui()
+		end)
+	end
+	
+	drag(frame)
+end
+coroutine.wrap(HTBQBZC_fake_script)()
